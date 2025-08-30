@@ -1,0 +1,17 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/refs/heads/master/C4_Container.puml
+
+Person(tenant, "Собственник жилья")
+Person(support, "Служба поддержки")
+Container(propDevelopment, "Сервисы компании")
+Container_Ext(partnerApi, "API устройств партнера")
+Container_Ext(smartIntercom, "Умный домофон")
+Container_Ext(smartBarrier, "Умный шлагбаум")
+
+Rel_D(tenant, propDevelopment, "Управляет устройствами")
+Rel_D(support, propDevelopment, "Получает статус устройств")
+Rel_D(propDevelopment, partnerApi, "Делает запросы")
+Rel_D(partnerApi, smartIntercom, "Делает запросы и получает видеопоток")
+Rel_D(partnerApi, smartBarrier, "Делает запросы")
+
+@enduml
